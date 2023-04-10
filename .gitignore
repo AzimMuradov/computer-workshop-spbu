@@ -1,0 +1,7 @@
+## Idea and Clion files
+.idea/
+cmake-build-debug/
+
+# Gradle build and cache files
+.gradle/
+build/
