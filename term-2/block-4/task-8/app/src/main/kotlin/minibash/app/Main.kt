@@ -29,6 +29,7 @@ fun main(args: Array<String>) {
                 println(hintForHelp())
             }
         }
+
         1 -> {
             val arg = args.first()
             if (arg.startsWith(prefix = "--")) {
@@ -49,6 +50,7 @@ fun main(args: Array<String>) {
                 }
             }
         }
+
         else -> {
             System.err.println("minibash: too many arguments")
             println(hintForHelp())

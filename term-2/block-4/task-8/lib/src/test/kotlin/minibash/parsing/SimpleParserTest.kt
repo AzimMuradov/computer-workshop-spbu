@@ -58,40 +58,50 @@ internal class SimpleParserTest {
             "\$var=\$Abc" to va(name = "var", value = variable("Abc")),
             "\$var=\$ab_c_" to va(name = "var", value = variable("ab_c_")),
             "\$var=\$abc  \t " to va(name = "var", value = variable("abc")),
-            "\$var=\"\$abc \"" to va(name = "var", value = quoted(
-                listOf(
-                    variable("abc").left(),
-                    " ".right()
+            "\$var=\"\$abc \"" to va(
+                name = "var", value = quoted(
+                    listOf(
+                        variable("abc").left(),
+                        " ".right()
+                    )
                 )
-            )),
-            "\$var=\" \$abc\"" to va(name = "var", value = quoted(
-                listOf(
-                    " ".right(),
-                    variable("abc").left(),
+            ),
+            "\$var=\" \$abc\"" to va(
+                name = "var", value = quoted(
+                    listOf(
+                        " ".right(),
+                        variable("abc").left(),
+                    )
                 )
-            )),
-            "\$var=\" \$abc\t \"" to va(name = "var", value = quoted(
-                listOf(
-                    " ".right(),
-                    variable("abc").left(),
-                    "\t ".right()
+            ),
+            "\$var=\" \$abc\t \"" to va(
+                name = "var", value = quoted(
+                    listOf(
+                        " ".right(),
+                        variable("abc").left(),
+                        "\t ".right()
+                    )
                 )
-            )),
-            "\$var=\"txt\$abc text\"" to va(name = "var", value = quoted(
-                listOf(
-                    "txt".right(),
-                    variable("abc").left(),
-                    " text".right(),
+            ),
+            "\$var=\"txt\$abc text\"" to va(
+                name = "var", value = quoted(
+                    listOf(
+                        "txt".right(),
+                        variable("abc").left(),
+                        " text".right(),
+                    )
                 )
-            )),
-            "\$var=\"txt \$abc \$xyz\"" to va(name = "var", value = quoted(
-                listOf(
-                    "txt ".right(),
-                    variable("abc").left(),
-                    " ".right(),
-                    variable("xyz").left(),
+            ),
+            "\$var=\"txt \$abc \$xyz\"" to va(
+                name = "var", value = quoted(
+                    listOf(
+                        "txt ".right(),
+                        variable("abc").left(),
+                        " ".right(),
+                        variable("xyz").left(),
+                    )
                 )
-            )),
+            ),
 
 
             // Variable assignment instruction failed

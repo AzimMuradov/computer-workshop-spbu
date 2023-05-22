@@ -58,6 +58,7 @@ class Table private constructor(val info: TableInfo, private val shoeFabric: (nu
                     bet = bet,
                     shoe = shoe
                 )
+
                 is GameState.AfterGame -> null
             }
         }
@@ -78,6 +79,7 @@ class Table private constructor(val info: TableInfo, private val shoeFabric: (nu
                         shoe = shoe,
                         bet = bet
                     )
+
                     else -> GameState.InGame(
                         table = info,
                         dealer = DealerState(initDealer.openCard),
@@ -86,6 +88,7 @@ class Table private constructor(val info: TableInfo, private val shoeFabric: (nu
                     )
                 }
             }
+
             PlayerMove.STAND -> endGame(gameHands, shoe, bet)
         }
     }

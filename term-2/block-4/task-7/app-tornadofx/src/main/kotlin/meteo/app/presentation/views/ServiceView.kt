@@ -36,6 +36,7 @@ class ServiceView : Fragment() {
                         this += find<DataRowView>(DataRowView::state to it)
                     }
                 }
+
                 is LoadingState.Error -> {
                     this += find<DataRowView>(
                         DataRowView::state to NamedValue(name = loadingErrorMessage(loadingState), value = "")

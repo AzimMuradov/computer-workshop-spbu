@@ -31,9 +31,11 @@ class MeteoCliView(
                         LoadingState.Loading -> outputStream.println(
                             loadingServiceMessage(name)
                         )
+
                         is LoadingState.Success -> outputStream.println(
                             weather.value.toHumanReadable(name)
                         )
+
                         is LoadingState.Error -> errorStream.println(
                             errorWithLoadingServiceMessage(name, weather.message)
                         )

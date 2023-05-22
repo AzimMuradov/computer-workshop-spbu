@@ -12,6 +12,7 @@ class InterpreterImpl(private val availableCommands: List<Command>) : Interprete
         is Instruction.VariableAssignment -> InterpretationOut(
             variable = instruction.run { name to value.expand(variables) }
         )
+
         is Instruction.Pipe -> {
             val (output, errors, signal) = PipeImpl.run(
                 commandsWithArguments = instruction.commandsWithArguments.map { (cmdName, expandableArgs) ->
@@ -24,6 +25,7 @@ class InterpreterImpl(private val availableCommands: List<Command>) : Interprete
 
             InterpretationOut(output = output, errors = errors, signal = signal)
         }
+
         Instruction.None -> InterpretationOut()
         is Instruction.SyntaxError -> InterpretationOut(errors = instruction.message.asSequence())
     }
@@ -36,6 +38,7 @@ class InterpreterImpl(private val availableCommands: List<Command>) : Interprete
                 onRight = { it }
             )
         }
+
         is ExpandableString.Variable -> variables[name] ?: System.getenv()[name] ?: ""
         is ExpandableString.Word -> value
     }

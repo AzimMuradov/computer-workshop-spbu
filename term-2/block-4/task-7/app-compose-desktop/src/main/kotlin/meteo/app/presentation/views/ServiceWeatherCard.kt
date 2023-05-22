@@ -51,12 +51,14 @@ fun ServiceWeatherCard(serviceWeatherInfo: NamedValue<LoadingState<Weather>>) {
                             modifier = Modifier.height(24.dp).rotate(degrees),
                         )
                     }
+
                     is LoadingState.Success -> Icon(
                         imageVector = Icons.Default.Check,
                         contentDescription = null,
                         modifier = Modifier.height(24.dp),
                         tint = Color(color = 0xFF009900)
                     )
+
                     is LoadingState.Error -> Icon(
                         painter = painterResource(resourcePath = "icons/error_black_36dp.svg"),
                         contentDescription = null,
@@ -83,6 +85,7 @@ fun ServiceWeatherCard(serviceWeatherInfo: NamedValue<LoadingState<Weather>>) {
                             }
                         }
                     }
+
                     is LoadingState.Error -> Text(text = loadingErrorMessage(loadingState))
                 }
             }

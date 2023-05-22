@@ -41,9 +41,11 @@ object SimpleParser : Parser {
                 } else {
                     Instruction.SyntaxError(INCORRECT_VARIABLE_SYNTAX_ERROR_MESSAGE)
                 }
+
                 null -> {
                     Instruction.None
                 }
+
                 else -> if (PIPE_REGEX.matches(trimmedLine)) {
                     parsePipe(trimmedLine)
                 } else {
@@ -121,6 +123,7 @@ object SimpleParser : Parser {
 
             ExpandableString.Quoted(parsedContent)
         }
+
         '$' -> ExpandableString.Variable(name = trimmed.drop(n = 1))
         else -> ExpandableString.Word(trimmed)
     }
