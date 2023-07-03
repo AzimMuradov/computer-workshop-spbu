@@ -1,6 +1,6 @@
 # Computer Workshop - SPbU
 
-Repository of homework in the discipline "Computer Workshop"
+Repository of homework in the discipline "Computer Workshop".
 
 
 ## License
